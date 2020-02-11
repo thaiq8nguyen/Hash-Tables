@@ -80,6 +80,7 @@ class HashTable:
         '''
         hashed_key = self._hash_mod(key)
 
+        # No key found
         if self.storage[hashed_key] is None:
             print("Warning! Key not found")
             return
@@ -87,8 +88,11 @@ class HashTable:
         # set the first node of the linked list
         node = self.storage[hashed_key]
         prev_node = None
+
+        # loop to the request node by its key
         while node:
-            if node.key == key:  # matches the current node key with the key argument, note that the key has not been hashed
+            # key is found
+            if node.key == key:
                 if prev_node:
                     if node.next:
                         prev_node = node.next
